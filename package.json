@@ -1,0 +1,27 @@
+{
+  "name": "fitcenter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon -L"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KevinEgidi/fitcenter-back.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KevinEgidi/fitcenter-back/issues"
+  },
+  "homepage": "https://github.com/KevinEgidi/fitcenter-back#readme",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10",
+    "sequelize": "^6.37.7",
+    "sqlite3": "^5.1.7"
+  }
+}

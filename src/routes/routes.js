@@ -5,7 +5,7 @@ const router = Router();
 router.get('/categories', allCategories);
 router.get('/category/:id', getCategoryById);
 router.put('/category', updateCategory);
-router.post('/category', createCategory);
+router.post('/categoryPROBANDO', createCategory);
 router.delete('/category', deleteCategory);
 
 module.exports = router;

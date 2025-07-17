@@ -4,6 +4,9 @@ import cors from 'cors';
 import dotenv from "dotenv";
 import categoriesRoutes from "./src/routes/routes.categories.js";
 import productsRoutes from "./src/routes/routes.products.js";
+const turnosRoutes = require('./routes/turnos.routes');  
+const sucursalesRoutes = require('./routes/sucursales.routes'); 
+
 dotenv.config();
 
 const server = express();
@@ -13,8 +16,12 @@ server.use(cors({
     origin: '*',
     credentials: true,
   }));
+  
 server.use('/categories', categoriesRoutes);
 server.use('/products', productsRoutes);
+server.use('/turnos', turnosRoutes); 
+server.use("/sucursales", sucursalesRoutes); 
+
 
 server.listen(server.get('port'), () => {
     console.log('Servidor corriendo en el puerto', server.get('port'));

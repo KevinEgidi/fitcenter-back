@@ -4,6 +4,10 @@ import cors from 'cors';
 import dotenv from "dotenv";
 import categoriesRoutes from "./src/routes/routes.categories.js";
 import productsRoutes from "./src/routes/routes.products.js";
+import exercisesRoutes from "./src/routes/routes.exercise.js";
+import routinesRoutes from "./src/routes/routes.routines.js";
+
+
 dotenv.config();
 
 const server = express();
@@ -15,6 +19,8 @@ server.use(cors({
   }));
 server.use('/categories', categoriesRoutes);
 server.use('/products', productsRoutes);
+server.use('/exercises',exercisesRoutes);
+server.use('/routines',routinesRoutes);
 
 server.listen(server.get('port'), () => {
     console.log('Servidor corriendo en el puerto', server.get('port'));

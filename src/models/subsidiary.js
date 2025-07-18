@@ -1,18 +1,18 @@
 const { DataTypes } = require("sequelize");
-const sequelize = require("../database/db");
+const sequelize = require("../../config/database.js");
 
-const Sucursales = sequelize.define("Sucursales", {
+const Subsidiary = sequelize.define("Subsidiary", {
     adress: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    puesto: {
+    position: {
         type: DataTypes.INTEGER,
         allowNull: false
     }
 }, {
-    tableName: "sucursales",
+    tableName: "subsidiary",
     timestamps: false
 });
 
-module.exports = Sucursales;
+module.exports = Subsidiary;

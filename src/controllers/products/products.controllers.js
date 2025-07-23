@@ -66,7 +66,7 @@ const productsController = {
             next(error);
         }
     },
-    updateProduct: async (req, res) => {
+    updateProduct: async (req, res, next) => {
         try {
             const { id } = req.params;
             const { name, price, description, stock, img, categoryId } = req.body;
@@ -160,7 +160,7 @@ const productsController = {
             next(error);
         }
     },
-    statusProduct: async (req, res) => {
+    statusProduct: async (req, res, next) => {
         try {
             const { id } = req.params;
             const { disabled } = req.body;

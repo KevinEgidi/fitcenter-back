@@ -1,5 +1,4 @@
 import dotenv from "dotenv";
-dotenv.config();
 import express from "express";
 import sequelize from './config/database.js';
 import cors from 'cors';
@@ -11,6 +10,11 @@ import clientsRoutes from "./src/routes/routes.clients.js";
 import instructorsRoutes from "./src/routes/routes.instructors.js";
 import professorsRoutes from "./src/routes/routes.professors.js";
 import membershipsRoutes from "./src/routes/routes.memberships.js";
+import exercisesRoutes from "./src/routes/routes.exercise.js";
+import routinesRoutes from "./src/routes/routes.routines.js";
+const bookingRoutes = require('./routes/turnos.routes');  
+const subsidiaryRoutes = require('./routes/routes.subsidiary'); 
+dotenv.config();
 
 
 const server = express();
@@ -20,6 +24,7 @@ server.use(cors({
     origin: '*',
     credentials: true,
   }));
+  
 server.use('/categories', categoriesRoutes);
 server.use('/products', productsRoutes);
 server.use('/users', usersRoutes);
@@ -28,6 +33,10 @@ server.use('/clients', clientsRoutes);
 server.use('/instructors', instructorsRoutes);
 server.use('/professors', professorsRoutes);
 server.use('/memberships', membershipsRoutes);
+server.use('/booking', bookingRoutes); 
+server.use("/subsidiary", subsidiaryRoutes); 
+server.use('/exercises',exercisesRoutes);
+server.use('/routines',routinesRoutes);
 
 server.listen(server.get('port'), () => {
     console.log('Servidor corriendo en el puerto', server.get('port'));

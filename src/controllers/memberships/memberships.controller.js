@@ -1,68 +1,72 @@
-import Membership from '../../models/Membership.js';
+import Membership from "../../models/Membership.js";
 
 const membershipsController = {
-    createMembership: async (req, res) => {
+  createMembership: async (req, res) => {
     try {
-        const { type, price } = req.body;
+      const { type, price } = req.body;
 
-        const newMembership = await Membership.create({
+      const newMembership = await Membership.create({
         type,
         price,
-        });
+      });
 
-        res.status(201).json(newMembership);
+      res.status(201).json(newMembership);
     } catch (error) {
-        res.status(500).json({ message: 'Error creating membership', error });
+      res.status(500).json({ message: "Error creating membership", error });
     }
-    },
+  },
 
-    getAllMemberships: async (req, res) => {
+  getAllMemberships: async (req, res) => {
     try {
-        const memberships = await Membership.findAll();
-        res.json(memberships);
+      const memberships = await Membership.findAll();
+      res.json(memberships);
     } catch (error) {
-        res.status(500).json({ message: 'Error fetching memberships', error });
+      res.status(500).json({ message: "Error fetching memberships", error });
     }
-    },
+  },
 
-    getMembershipById: async (req, res) => {
+  getMembershipById: async (req, res) => {
     try {
-        const { id } = req.params;
-        const membership = await Membership.findByPk(id);
-        if (!membership) return res.status(404).json({ message: 'Membership not found' });
+      const { id } = req.params;
+      const membership = await Membership.findByPk(id);
+      if (!membership)
+        return res.status(404).json({ message: "Membership not found" });
 
-        res.json(membership);
+      res.json(membership);
     } catch (error) {
-        res.status(500).json({ message: 'Error fetching membership', error });
+      res.status(500).json({ message: "Error fetching membership", error });
     }
-    },
+  },
 
-    updateMembership: async (req, res) => {
+  updateMembership: async (req, res) => {
     try {
-        const { id } = req.params;
-        const { type, price } = req.body;
+      const { id } = req.params;
+      const { type, price } = req.body;
 
-        const membership = await Membership.findByPk(id);
-        if (!membership) return res.status(404).json({ message: 'Membership not found' });
+      const membership = await Membership.findByPk(id);
+      if (!membership)
+        return res.status(404).json({ message: "Membership not found" });
 
-        await membership.update({ type, price });
-        res.json({ message: 'Membership updated', membership });
+      await membership.update({ type, price });
+      res.json({ message: "Membership updated", membership });
     } catch (error) {
-        res.status(500).json({ message: 'Error updating membership', error });
+      res.status(500).json({ message: "Error updating membership", error });
     }
-    },
+  },
 
-    deleteMembership: async (req, res) => {
+  deleteMembership: async (req, res) => {
     try {
-        const { id } = req.params;
-        const membership = await Membership.findByPk(id);
-        if (!membership) return res.status(404).json({ message: 'Membership not found' });
+      const { id } = req.params;
+      const membership = await Membership.findByPk(id);
+      if (!membership)
+        return res.status(404).json({ message: "Membership not found" });
 
-        await membership.destroy();
-        res.json({ message: 'Membership deleted' });
+      await membership.destroy();
+      res.json({ message: "Membership deleted" });
     } catch (error) {
-        res.status(500).json({ message: 'Error deleting membership', error });
+      res.status(500).json({ message: "Error deleting membership", error });
     }
-    },
+  },
+};
 
-}
+export default membershipsController;

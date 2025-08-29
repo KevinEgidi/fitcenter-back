@@ -1,18 +1,22 @@
-const { DataTypes } = require("sequelize");
-const sequelize = require("../../config/database.js");
+import { DataTypes } from "sequelize";
+import sequelize from "../../config/database.js";
 
-const Subsidiary = sequelize.define("Subsidiary", {
+const Subsidiary = sequelize.define(
+  "Subsidiary",
+  {
     adress: {
-        type: DataTypes.STRING,
-        allowNull: false
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     position: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    }
-}, {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+  },
+  {
     tableName: "subsidiary",
-    timestamps: false
-});
+    timestamps: false,
+  }
+);
 
-module.exports = Subsidiary;
+export default Subsidiary;

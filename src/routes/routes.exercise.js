@@ -3,10 +3,9 @@ import exercisesControllers from "../controllers/exercise/exercise.controllers.j
 
 const router = Router();
 
-router.get('/', exercisesControllers.getAllExercises);
-router.get('/:id', exercisesControllers.getExerciseById);
-router.put('/:id', exercisesControllers.updateExercise);
-router.post('/', exercisesControllers.createExercise);
-
+router.get("/", exercisesControllers.getAllExercises);
+router.get("/:id", exercisesControllers.getExerciseByid);
+router.put("/:id", exercisesControllers.updateExercise);
+router.post("/", exercisesControllers.createExercise);
 
 export default router;

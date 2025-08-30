@@ -41,17 +41,6 @@ app.use("/subsidiary", subsidiaryRoutes);
 app.use("/exercises", exercisesRoutes);
 app.use("/routines", routinesRoutes);
 
-// Ruta de prueba
-app.get("/", async (req, res) => {
-  try {
-    const [results] = await sequelize.query("SELECT * FROM products");
-    res.json(results);
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Error en la base de datos");
-  }
-});
-
 // Sincronizar modelos y levantar servidor
 (async () => {
   try {

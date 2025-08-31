@@ -1,28 +1,26 @@
-import { DataTypes } from "sequelize"; // Importa DataTypes de Sequelize
-import sequelize from "../../config/database.js"; // Importa la instancia de Sequelize
+import { DataTypes } from "sequelize";
+import sequelize from "../../config/database.js";
 
 const Booking = sequelize.define(
   "Booking",
   {
-    // Define el modelo Turnos
-
-    activity: {
-      type: DataTypes.STRING, // Define el campo actividad como tipo STRING
-      allowNull: false, // No permite valores nulos
+    date: {
+      type: DataTypes.STRING, //  DATE si querés validación de fecha
+      allowNull: false,
     },
-    entry: {
-      type: DataTypes.STRING, // Define el campo horarioEntra como tipo STRING
-      allowNull: false, // No permite valores nulos
+    time: {
+      type: DataTypes.STRING, // o TIME si tu DB lo soporta
+      allowNull: false,
     },
-    exit: {
-      type: DataTypes.STRING, // Define el campo horarioSal como tipo STRING
-      allowNull: false, // No permite valores nulos
+    instructor: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
   },
   {
-    tableName: "booking", // Especifica el nombre de la tabla en la base de datos
-    timestamps: false, // Desactiva los timestamps (createdAt, updatedAt)
+    tableName: "booking",
+    timestamps: false,
   }
 );
 
-export default Booking; // Exporta el modelo Turnos para usarlo en otros archivos
+export default Booking;

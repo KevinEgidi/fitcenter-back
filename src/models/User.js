@@ -1,8 +1,8 @@
-import { DataTypes } from 'sequelize';
-import sequelize from '../../config/database.js';
+import { DataTypes } from "sequelize";
+import sequelize from "../../config/database.js";
 
 const User = sequelize.define(
-  'User',
+  "User",
   {
     first_name: {
       type: DataTypes.STRING,
@@ -12,7 +12,7 @@ const User = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    adress: {
+    address: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -33,6 +33,10 @@ const User = sequelize.define(
       allowNull: false,
     },
   },
+  {
+    tableName: "users",
+    timestamps: false,
+  }
 );
 
 export default User;

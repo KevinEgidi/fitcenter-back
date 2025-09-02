@@ -1,38 +1,54 @@
-import { DataTypes } from 'sequelize';
-import sequelize from '../../config/database.js';
+import { DataTypes } from "sequelize";
+import sequelize from "../../config/database.js";
 
 const User = sequelize.define(
-  'User',
+  "User",
   {
     first_name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     last_name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     adress: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     phone: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    username: {
+    uid: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    password: {
-      type: DataTypes.STRING,
+    role: {
+      type: DataTypes.ENUM("professor", "instructor", "admin", "client"),
       allowNull: false,
+    },
+    registration_number: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    image_url: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    banned: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
   },
+  {
+    tableName: "users",
+    timestamps: true,
+  }
 );
 
 export default User;

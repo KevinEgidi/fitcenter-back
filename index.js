@@ -1,4 +1,5 @@
 import dotenv from "dotenv";
+dotenv.config();
 import express from "express";
 import sequelize from "./config/database.js";
 import cors from "cors";
@@ -17,33 +18,30 @@ import subsidiaryRoutes from "./src/routes/routes.subsidiary.js";
 
 dotenv.config();
 
-const server = express();
-server.use(express.json());
-server.set("port", 3000);
-server.use(
+const app = express();
+app.use(express.json());
+app.set("port", 3000);
+app.use(
   cors({
     origin: "*",
     credentials: true,
   })
 );
 
-server.use("/categories", categoriesRoutes);
-server.use("/products", productsRoutes);
-server.use("/users", usersRoutes);
-server.use("/administrators", administratorsRoutes);
-server.use("/clients", clientsRoutes);
-server.use("/instructors", instructorsRoutes);
-server.use("/professors", professorsRoutes);
-server.use("/memberships", membershipsRoutes);
-server.use("/booking", bookingRoutes);
-server.use("/subsidiary", subsidiaryRoutes);
-server.use("/exercises", exercisesRoutes);
-server.use("/routines", routinesRoutes);
+app.use("/categories", categoriesRoutes);
+app.use("/products", productsRoutes);
+app.use("/users", usersRoutes);
+app.use("/administrators", administratorsRoutes);
+app.use("/clients", clientsRoutes);
+app.use("/instructors", instructorsRoutes);
+app.use("/professors", professorsRoutes);
+app.use("/memberships", membershipsRoutes);
+app.use("/booking", bookingRoutes);
+app.use("/subsidiary", subsidiaryRoutes);
+app.use("/exercises", exercisesRoutes);
+app.use("/routines", routinesRoutes);
 
-server.listen(server.get("port"), () => {
-  console.log("Servidor corriendo en el puerto", server.get("port"));
-});
-
+// Sincronizar modelos y levantar servidor
 (async () => {
   try {
     await sequelize.authenticate();
@@ -52,8 +50,8 @@ server.listen(server.get("port"), () => {
     await sequelize.sync({ alter: true });
     console.log("🛠️ Modelos sincronizados");
 
-    server.listen(server.get("port"), () => {
-      console.log("Servidor corriendo en el puerto", server.get("port"));
+    app.listen(app.get("port"), () => {
+      console.log("Servidor corriendo en el puerto", app.get("port"));
     });
   } catch (error) {
     console.error("❌ Error conectando a la base de datos:", error);

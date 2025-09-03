@@ -1,6 +1,5 @@
-const { Router } = require("express");
-const controller = require("../controllers/subsidiary/subsidiary.controllers");
-
+import { Router } from "express";
+import controller from "../controllers/subsidiary/subsidiary.controllers.js";
 const router = Router();
 
 router.get("/", controller.getAllSubsidiary);
@@ -9,4 +8,4 @@ router.post("/", controller.createSubsidiary);
 router.put("/:id", controller.updateSubsidiary);
 router.delete("/:id", controller.deleteSubsidiary);
 
-module.exports = router;
+export default router;
